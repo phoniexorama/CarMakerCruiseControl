@@ -1,5 +1,5 @@
 pipeline {
-    agent carMakerHost
+    agent CarMakerServer
 
     parameters {
         // Define parameters for scenario names and output directories
