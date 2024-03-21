@@ -79,9 +79,9 @@ def create_excel_file(description, tire_info, corresponding_values, excel_folder
 
 
 def main():
-    vff_folder_path = "C:/CM_Test/Frg-Bedatung_Cayenne_E4_CM12/Data/Vehicle"
-    dat_folder_path = "C:/CM_Test/Frg-Bedatung_Cayenne_E4_CM12/SimOutput/ENGPMAKNB022/log"  # Adjust this path
-    excel_folder_path = "C:/CM_Test/Frg-Bedatung_Cayenne_E4_CM12/VehicleInfoExcel"
+    vff_folder_path = os.environ.get('VFF_FOLDER_PATH')
+    dat_folder_path = os.environ.get('DAT_FOLDER_PATH')  # Adjust this path
+    excel_folder_path = os.environ.get('EXCEL_FOLDER_PATH')
 
     for vff_filename in os.listdir(vff_folder_path):
         if vff_filename.endswith("_VFF"):
