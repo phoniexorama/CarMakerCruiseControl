@@ -11,7 +11,7 @@ pipeline {
         DAT_FOLDER_PATH = "C:\\CM_Test\\Frg-Bedatung_Cayenne_E4_CM12\\SimOutput\\ENGPMAKNB022\\log"
         EXCEL_FOLDER_PATH = "C:\\CM_Test\\Frg-Bedatung_Cayenne_E4_CM12\\VehicleInfoExcel"
         BATCH_SCRIPT_PATH = "C:\\CM_Test\\Frg-Bedatung_Cayenne_E4_CM12\\carmakerTestseries.bat"
-        TEST_SERIES_FOLDER_PATH = "C:\\CM_Test\\Frg-Bedatung_Cayenne_E4_CM12\\Testseries"
+        TEST_SERIES_FOLDER_PATH = "C:\\CM_Test\\Frg-Bedatung_Cayenne_E4_CM12\\Data\\TestRun"
     }
 
     stages {
