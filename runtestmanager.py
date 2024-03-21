@@ -45,14 +45,14 @@ def run_batch_script(script_path):
 
 
 if __name__ == "__main__":
-    batch_script_path = "C:/CM_Test/Frg-Bedatung_Cayenne_E4_CM12/carmakerTestseries.bat"
-    folder_path = "C:/CM_Test/Frg-Bedatung_Cayenne_E4_CM12/Data/TestRun"
+    batch_script_path = os.environ.get('BATCH_SCRIPT_PATH')
+    test_series_folder_path = os.environ.get('TEST_SERIES_FOLDER_PATH')
 
     # Get a list of all .ts files in the directory
-    ts_files = [filename for filename in os.listdir(folder_path) if filename.endswith(".ts")]
+    ts_files = [filename for filename in os.listdir(test_series_folder_path) if filename.endswith(".ts")]
 
     for ts_file in ts_files:
-        ts_file_path = os.path.join(folder_path, ts_file)
+        ts_file_path = os.path.join(test_series_folder_path, ts_file)
 
         # Replace TSFNAME in the batch script with the current ts file name
         replace_tsfname_in_batch_script(batch_script_path, ts_file)
