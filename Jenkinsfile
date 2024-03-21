@@ -1,6 +1,7 @@
 pipeline {
-    agent CarMakerServer
-
+    agent {
+        label 'CarMakerServer' // Label for Windows agent
+    }
     environment {
         TEMPLATE_FOLDER_PATH = "C:\\CM_Test\\Frg-Bedatung_Cayenne_E4_CM12\\Data\\TestRun\\Lenkwinkelrampe_Template"
         VEHICLE_FOLDER_PATH = "C:\\CM_Test\\Frg-Bedatung_Cayenne_E4_CM12\\Data\\Vehicle"
