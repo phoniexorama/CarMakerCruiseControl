@@ -38,10 +38,10 @@ def copy_template_to_testseries(template_file_path, destination_folder, new_file
         return None
 
 # Directory containing Excel files
-excel_folder = "C:/CM_Test/Frg-Bedatung_Cayenne_E4_CM12/VehicleInfoExcel"
+excel_folder = os.environ.get('EXCEL_FOLDER_PATH')
 
 # Read the template.ts file
-template_file_path = "C:/CM_Test/Frg-Bedatung_Cayenne_E4_CM12/Template.ts"
+template_file_path = os.environ.get('TEMPLATE_FILE')
 with open(template_file_path, "r") as file:
     template_content = file.read()
 print("Read template.ts file content successfully.")
@@ -101,7 +101,7 @@ for file_name in os.listdir(excel_folder):
     print("Modified content written back to template.ts file.")
 
     # Copy template.ts file to Testseries folder and rename it based on A2_value
-    destination_folder = "C:/CM_Test/Frg-Bedatung_Cayenne_E4_CM12/Data/TestRun"
+    destination_folder = os.environ.get('DESTINATION_FOLDER')
     new_file_name = f"{A2_value}.ts"
     copied_file_path = copy_template_to_testseries(template_file_path, destination_folder, new_file_name)
     if copied_file_path:
