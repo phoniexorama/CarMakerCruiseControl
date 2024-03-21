@@ -1,0 +1,137 @@
+newmtl Schriftzug
+Ka  0.8  0.8  0.8
+Kd  1.0  1.0  1.0
+Ks  1.0  1.0  1.0
+
+newmtl HSW
+Ka 0.4 0.4 0.4
+Kd 0.6 0.6 0.6
+Ks 0.6 0.6 0.6
+cullface 1
+Ns 90.000011
+Tr 1.00000
+
+newmtl Rueckleuchte
+Kd 0.80000001192093 0 0
+Ks 0.8 0.8 0.8
+Ns 50
+illum 7
+
+newmetl Kennzeichnenhalter
+Ka 0.64 0.0 0.0
+Kd 0.64 0.0 0.0
+Ks 1.0 1.0 1.0
+
+newmtl Scheiben
+Ka 0.066667 0.129412 0.109804
+Kd 0.066667 0.129412 0.109804
+Ks 0.894118 0.894118 0.894118
+cullface 1
+Tr 1.00000
+Ns 90.000011
+
+newmtl Spiegelglas
+Spiegelglas:
+Kd 0 0 0
+illum 7
+
+newmtl Endrohrblenden
+Kd 1 1 1
+Ks 0.00620900001377 0.00620900001377 0.00620900001377
+Ns 3.451
+illum 7
+
+#newmtl Heck_Unterteil
+#Ka 0.2 0.2 0.2
+#Kd 0.3 0.3 0.3
+#Ks 0.7 0.7 0.7
+
+newmetl Blinkleuchte_Glas
+Ka 1 1 1
+Kd 0.95999997854233 0.84351998567581 0.4607999920845
+Ks 1 1 1
+Ns 50
+illum 7
+
+newmtl Bugteil_Kunstoffverkleidung
+Ka 0.2 0.2 0.2
+Kd 0.3 0.3 0.3
+Ks 0.7 0.7 0.7
+
+newmtl Sensoren
+Ka 0 0 0
+Kd 0.3 0.3 0.3
+Ks 1.0 1.0 1.0
+
+newmtl Verkleidung_Schweller_Heckteil
+Ka 0.2 0.2 0.2
+Kd 0.3 0.3 0.3
+Ks 0.7 0.7 0.7
+
+newmtl Spiegel_Blinker
+Ka 1 1 1
+Kd 0.95999997854233 0.84351998567581 0.4607999920845
+Ks 1 1 1
+Ns 50
+illum 7
+
+newmtl Dachreling
+Kd 1 1 1
+Ks 0.00620900001377 0.00620900001377 0.00620900001377
+Ns 3.451
+illum 7
+
+newmtl Schiebedach_Glas
+Ka 0.066667 0.129412 0.109804
+Kd 0.066667 0.129412 0.109804
+Ks 0.894118 0.894118 0.894118
+cullface 1
+Tr 1.00000
+Ns 90.000011
+
+newmtl Spoiler_hinten_Kunstoff
+Ka 0.1 0.1 0.1
+Kd 0.3 0.3 0.3
+Ks 0.7 0.7 0.7
+
+newmtl Dichtungen
+Ka 0 0 0
+Kd 0.3 0.3 0.3
+Ks 1.0 1.0 1.0
+
+newmtl Schiebedach_Kunststoff
+Kd 0.15053799748421 0.15053799748421 0.15053799748421
+illum 7
+
+newmtl Tuer_Blend_umlaufend
+Kd 0.10320000350475 0.10740000009537 0.11999999731779
+Ks 1 1 1
+Ns 50
+
+newmtl Tuer_Blende_Kunststoff
+Ka 0.2 0.2 0.2
+Kd 0.3 0.3 0.3
+Ks 0.7 0.7 0.7
+
+newmtl Heckteil_Rueckstrahler
+Kd 0.80000001192093 0 0
+Ks 1 1 1
+Ns 50
+illum 7
+
+newmtl PDC_Sensoren
+Ka 0.2 0.2 0.2
+Kd 0.1 0.1 0.1
+Ks 0.5 0.5 0.5
+
+
+newmtl UBV
+Ka 0 0 0
+Kd 0.3 0.3 0.3
+Ks 1.0 1.0 1.0
+
+newmtl Karosserie
+Ka 0.1 0.1 0.1
+Kd 0.1 0.1 0.1
+Ks 0.5 0.5 0.5
+illum 1

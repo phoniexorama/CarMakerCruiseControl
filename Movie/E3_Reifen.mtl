@@ -1,0 +1,11 @@
+newmtl Reifen
+Ka 0 0 0
+Kd 0.0588235296309 0.00392156885937 0
+Ks 0 0 0
+Ns 50
+illum 7
+
+
+newmtl Felgen
+Kd 0.800000 0.800000 0.800000
+illum 1
