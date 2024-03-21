@@ -89,10 +89,10 @@ def copy_files_to_log_folder(src_folder, dest_folder):
 
 def main():
     # Paths
-    template_folder_path = "C:\\CM_Test\\Frg-Bedatung_Cayenne_E4_CM12\\Data\\TestRun\\Lenkwinkelrampe_Template"
-    vehicle_folder_path = "C:\\CM_Test\\Frg-Bedatung_Cayenne_E4_CM12\\Data\\Vehicle"
-    output_folder = "C:\\CM_Test\\Frg-Bedatung_Cayenne_E4_CM12\\SimOutput\\ENGPMAKNB022"
-    log_folder = "C:\\CM_Test\\Frg-Bedatung_Cayenne_E4_CM12\\SimOutput\\ENGPMAKNB022\\Log"
+    template_folder_path = os.environ.get('TEMPLATE_FOLDER_PATH')
+    vehicle_folder_path = os.environ.get('VEHICLE_FOLDER_PATH')
+    output_folder = os.environ.get('OUTPUT_FOLDER')
+    log_folder = os.environ.get('LOG_FOLDER')
 
     # Get list of filenames in the vehicle folder
     for filename in os.listdir(vehicle_folder_path):
