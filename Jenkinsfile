@@ -5,8 +5,8 @@ pipeline {
     environment {
         TEMPLATE_FOLDER_PATH = "C:\\CM_Test\\Frg-Bedatung_Cayenne_E4_CM12\\Data\\TestRun\\Lenkwinkelrampe_Template"
         TEMPLATE_FILE = "C:\\CM_Test\\Frg-Bedatung_Cayenne_E4_CM12\\Template.ts"
-		DESTINATION_FOLDER = "C:\\CM_Test\\Frg-Bedatung_Cayenne_E4_CM12\\Data\\TestRun"
-		VEHICLE_FOLDER_PATH = "C:\\CM_Test\\Frg-Bedatung_Cayenne_E4_CM12\\Data\\Vehicle"
+	DESTINATION_FOLDER = "C:\\CM_Test\\Frg-Bedatung_Cayenne_E4_CM12\\Data\\TestRun"
+	VEHICLE_FOLDER_PATH = "C:\\CM_Test\\Frg-Bedatung_Cayenne_E4_CM12\\Data\\Vehicle"
         OUTPUT_FOLDER = "C:\\CM_Test\\Frg-Bedatung_Cayenne_E4_CM12\\SimOutput\\ENGPMAKNB022"
         LOG_FOLDER = "C:\\CM_Test\\Frg-Bedatung_Cayenne_E4_CM12\\SimOutput\\ENGPMAKNB022\\Log"
         VFF_FOLDER_PATH = "C:\\CM_Test\\Frg-Bedatung_Cayenne_E4_CM12\\Data\\Vehicle"
