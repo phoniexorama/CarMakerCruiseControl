@@ -95,16 +95,16 @@ for file_name in os.listdir(excel_folder):
                 template_content = "\n".join(lines)
                 print(f"Modified content for '{search_string}'.")
 
-    # Write the modified content back to the template.ts file
-    with open(template_file_path, "w") as file:
-        file.write(template_content)
-    print("Modified content written back to template.ts file.")
+        # Write the modified content back to the template.ts file
+        with open(template_file_path, "w") as file:
+            file.write(template_content)
+        print("Modified content written back to template.ts file.")
 
-    # Copy template.ts file to Testseries folder and rename it based on A2_value
-    destination_folder = os.environ.get('DESTINATION_FOLDER')
-    new_file_name = f"{A2_value}.ts"
-    copied_file_path = copy_template_to_testseries(template_file_path, destination_folder, new_file_name)
-    if copied_file_path:
-        print(f"New file created: {copied_file_path}")
-    else:
-        print("Failed to create new file.")
+        # Copy template.ts file to Testseries folder and rename it based on A2_value
+        destination_folder = os.environ.get('DESTINATION_FOLDER')
+        new_file_name = f"{A2_value}.ts"
+        copied_file_path = copy_template_to_testseries(template_file_path, destination_folder, new_file_name)
+        if copied_file_path:
+            print(f"New file created: {copied_file_path}")
+        else:
+            print("Failed to create new file.")
