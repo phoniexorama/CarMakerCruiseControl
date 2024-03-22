@@ -17,6 +17,15 @@ pipeline {
     }
 
     stages {
+        stage('wait for 30 seconds') {
+            steps {
+                script {
+                    // Wait for 30 seconds
+                    bat "ping 127.0.0.1 -n 31 > nul"
+                }
+            }
+        }
+
         stage('dat file generation') {
             steps {
                 script {
