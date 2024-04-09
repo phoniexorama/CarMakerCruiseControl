@@ -20,7 +20,8 @@ pipeline {
         stage('wait for 30 seconds') {
             steps {
                 script {
-                    // Wait for 30 seconds
+                    // Wait for 30 seconds to change the value to ASCII format manually
+                    //later this stage can be removed
                     bat "ping 127.0.0.1 -n 31 > nul"
                 }
             }
@@ -53,6 +54,17 @@ pipeline {
             }
         }
 
+        stage('wait for 30 seconds') {
+            steps {
+                script {
+                    // Wait for 30 seconds to change the value to ERG format manually
+                    // Diagram layout to small manually manually
+                    // later this stage can be removed
+                    bat "ping 127.0.0.1 -n 31 > nul"
+                }
+            }
+        }
+        
         stage('run test manager') {
             steps {
                 script {
