@@ -83,6 +83,10 @@ def main():
     dat_folder_path = os.environ.get('DAT_FOLDER_PATH')  # Adjust this path
     excel_folder_path = os.environ.get('EXCEL_FOLDER_PATH')
 
+    # Create excel_folder_path if it does not exist
+    if not os.path.exists(excel_folder_path):
+        os.makedirs(excel_folder_path)
+    
     for vff_filename in os.listdir(vff_folder_path):
         if vff_filename.endswith("_VFF"):
             vff_file_path = os.path.join(vff_folder_path, vff_filename)
