@@ -45,8 +45,10 @@ def run_batch_script(script_path):
 
 
 if __name__ == "__main__":
-    batch_script_path = os.environ.get('BATCH_SCRIPT_PATH')
-    test_series_folder_path = os.environ.get('TEST_SERIES_FOLDER_PATH')
+    batch_script_path = "C:/CM_Test/Frg-Bedatung_Cayenne_E4_CM12/carmakerTestseries.bat"
+    test_series_folder_path = "C:/CM_Test/Frg-Bedatung_Cayenne_E4_CM12/Data/TestRun"
+    # batch_script_path = os.environ.get('BATCH_SCRIPT_PATH')
+    # test_series_folder_path = os.environ.get('TEST_SERIES_FOLDER_PATH')
 
     # Get a list of all .ts files in the directory
     ts_files = [filename for filename in os.listdir(test_series_folder_path) if filename.endswith(".ts")]
