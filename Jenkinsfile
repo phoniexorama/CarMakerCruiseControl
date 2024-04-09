@@ -54,7 +54,7 @@ pipeline {
             }
         }
 
-        stage('wait for 30 seconds') {
+        stage('await for 30 seconds') {
             steps {
                 script {
                     // Wait for 30 seconds to change the value to ERG format manually
