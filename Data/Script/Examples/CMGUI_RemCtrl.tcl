@@ -27,12 +27,15 @@ if $env(SIM_TS) {
 	TestMgr start
 	
 	# Set the path to the report folder
-    set report_folder "doc"
+    	set report_folder "doc"
+
+     	#Diagram setting small defined here
+	Report loadtemplate TestTemplate.cmrep
 	
 	# Set a convenient name for the report file
-    set RptFPath [file join $report_folder "$env(TSFNAME)"]
-    set RptFPath [file rootname "$RptFPath"]
-    set RptFPath "${RptFPath}.pdf"
+    	set RptFPath [file join $report_folder "$env(TSFNAME)"]
+    	set RptFPath [file rootname "$RptFPath"]
+    	set RptFPath "${RptFPath}.pdf"
 	
 	# Let some time to finish to prepare the report diagrams
 	after 1000
