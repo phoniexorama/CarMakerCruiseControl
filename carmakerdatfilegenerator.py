@@ -17,6 +17,26 @@ def replace_vehicle_value(template_folder_path, new_vehicle_values):
             file.write(line)
 
 
+def ascii_format_setup(file_path, new_line):
+    # Define the line prefix to be modified
+    line_startswith = 'DStore.Format'
+
+    # Read the existing content of the file
+    with open(file_path, 'r', encoding='utf-8') as file:
+        lines = file.readlines()
+
+    # Find and replace the specific line
+    for i, line in enumerate(lines):
+        if line.startswith(line_startswith):
+            lines[i] = new_line
+            break  # Stop searching after the line is found and updated
+
+    # Write the updated content back to the file
+    with open(file_path, 'w', encoding='utf-8') as file:
+        file.writelines(lines)
+
+    print(f'File "{file_path}" has been updated.')
+
 def load_and_start_test_run(test_run_path):
     time.sleep(6)  # Wait for 6 seconds
     carmaker_tm_executable = "C:\\IPG\\carmaker\\win64-12.0.2\\bin\\CM.exe"
@@ -93,7 +113,13 @@ def main():
     vehicle_folder_path = os.environ.get('VEHICLE_FOLDER_PATH')
     output_folder = os.environ.get('OUTPUT_FOLDER')
     log_folder = os.environ.get('LOG_FOLDER')
+    format_file_config_path = os.environ.get('FORMAT_FILE_CONFIG_PATH')
 
+    ascii_format = 'DStore.Format = ascii\n'
+
+    # Initial settings for ascii format file generation
+    ascii_format_setup(format_file_config_path, ascii_format)
+    
     # Get list of filenames in the vehicle folder
     for filename in os.listdir(vehicle_folder_path):
         new_vehicle_value = filename  # Use the filename as the new vehicle value
