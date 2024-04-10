@@ -18,16 +18,7 @@ pipeline {
     }
 
     stages {
-        stage('wait for 30 seconds') {
-            steps {
-                script {
-                    // Wait for 30 seconds to change the value to ASCII format manually
-                    //later this stage can be removed
-                    bat "ping 127.0.0.1 -n 31 > nul"
-                }
-            }
-        }
-
+        
         stage('dat file generation') {
             steps {
                 script {
@@ -51,17 +42,6 @@ pipeline {
                 script {
                     // Call the Python script for test series generation
                     bat "python testseriesgenerator.py"
-                }
-            }
-        }
-
-        stage('await for 30 seconds') {
-            steps {
-                script {
-                    // Wait for 30 seconds to change the value to ERG format manually
-                    // Diagram layout to small manually manually
-                    // later this stage can be removed
-                    bat "ping 127.0.0.1 -n 31 > nul"
                 }
             }
         }
