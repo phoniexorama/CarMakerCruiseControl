@@ -28,6 +28,26 @@ def replace_tsfname_in_batch_script(batch_script_path, new_tsfname):
     except Exception as e:
         print(f"An error occurred: {e}")
 
+def erg_format_setup(file_path, new_line):
+    # Define the line prefix to be modified
+    line_startswith = 'DStore.Format'
+
+    # Read the existing content of the file
+    with open(file_path, 'r', encoding='utf-8') as file:
+        lines = file.readlines()
+
+    # Find and replace the specific line
+    for i, line in enumerate(lines):
+        if line.startswith(line_startswith):
+            lines[i] = new_line
+            break  # Stop searching after the line is found and updated
+
+    # Write the updated content back to the file
+    with open(file_path, 'w', encoding='utf-8') as file:
+        file.writelines(lines)
+
+    print(f'File "{file_path}" has been updated.')
+
 def run_batch_script(script_path):
     try:
         # Add delay of 1 minute before running the batch script
@@ -49,7 +69,12 @@ if __name__ == "__main__":
     test_series_folder_path = "C:/CM_Test/Frg-Bedatung_Cayenne_E4_CM12/Data/TestRun"
     # batch_script_path = os.environ.get('BATCH_SCRIPT_PATH')
     # test_series_folder_path = os.environ.get('TEST_SERIES_FOLDER_PATH')
+    format_file_config_path = os.environ.get('FORMAT_FILE_CONFIG_PATH')
 
+    erg_format = 'DStore.Format = erg\n'
+    # Initial setup for erg format
+    erg_format_setup(format_file_config_path, erg_format)
+    
     # Get a list of all .ts files in the directory
     ts_files = [filename for filename in os.listdir(test_series_folder_path) if filename.endswith(".ts")]
 
