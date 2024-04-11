@@ -1,3 +1,4 @@
+@Library('cm_shared_library') _
 pipeline {
     agent {
         label 'CarMakerServer' // Label for Windows agent
@@ -23,7 +24,8 @@ pipeline {
             steps {
                 script {
                     // Call the Python script for dat file generation
-                    bat "python carmakerdatfilegenerator.py"
+                    //bat "python carmakerdatfilegenerator.py"
+                    stepCarMakerDatFileGenerator()
                 }
             }
         }
@@ -32,7 +34,8 @@ pipeline {
             steps {
                 script {
                     // Call the Python script for excel file generation
-                    bat "python autoexcelfilegenerator.py"
+                    //bat "python autoexcelfilegenerator.py"
+                    stepAutoExcelFileGenerator()
                 }
             }
         }
@@ -41,7 +44,15 @@ pipeline {
             steps {
                 script {
                     // Call the Python script for test series generation
-                    bat "python testseriesgenerator.py"
+                    //bat "python testseriesgenerator.py"
+                    def fileName = 'Template.ts'
+                    def sourcePath = 'template/Template.ts'
+                    def targetPath = "${env.WORKSPACE}" // Use Jenkins workspace as target
+                    
+                    // Call the copyFile function to copy the file
+                    stepCopyFile(fileName, sourcePath, targetPath)
+
+                    stepTestSeriesGenerator()
                 }
             }
         }
@@ -50,7 +61,14 @@ pipeline {
             steps {
                 script {
                     // Call the Python script for running test manager
-                    bat "python runtestmanager.py"
+                    //bat "python runtestmanager.py"
+                    def fileName = 'carmakerTestseries.bat'
+                    def sourcePath = 'bat/carmakerTestseries.bat'
+                    def targetPath = "${env.WORKSPACE}" // Use Jenkins workspace as target
+                    
+                    // Call the copyFile function to copy the file
+                    stepCopyFile(fileName, sourcePath, targetPath)
+                    stepRunTestManager()
                 }
             }
         }
