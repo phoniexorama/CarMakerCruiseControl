@@ -45,6 +45,13 @@ pipeline {
                 script {
                     // Call the Python script for test series generation
                     //bat "python testseriesgenerator.py"
+                    def fileName = 'Template.ts'
+                    def sourcePath = 'template/Template.ts'
+                    def targetPath = "${env.WORKSPACE}" // Use Jenkins workspace as target
+                    
+                    // Call the copyFile function to copy the file
+                    stepCopyFile(fileName, sourcePath, targetPath)
+
                     stepTestSeriesGenerator()
                 }
             }
@@ -55,6 +62,12 @@ pipeline {
                 script {
                     // Call the Python script for running test manager
                     //bat "python runtestmanager.py"
+                    def fileName = 'carmakerTestseries.bat'
+                    def sourcePath = 'bat/carmakerTestseries.bat'
+                    def targetPath = "${env.WORKSPACE}" // Use Jenkins workspace as target
+                    
+                    // Call the copyFile function to copy the file
+                    stepCopyFile(fileName, sourcePath, targetPath)
                     stepRunTestManager()
                 }
             }
