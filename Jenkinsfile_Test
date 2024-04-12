@@ -74,8 +74,14 @@ pipeline {
                     def destPath = "${env.WORKSPACE}"
                     def dataDestPath = "${env.WORKSPACE}\\Data"
 
-                    bat "mkdir \"${env.WORKSPACE}\""
-                     bat "mkdir \"${env.WORKSPACE}\\Data\""
+                   def workspacePath = env.WORKSPACE
+                    def directoryName = getLastSegment(workspacePath)
+                    
+                    // Define the target directory path within the workspace
+                    def targetDir = "${workspacePath}\\${directoryName}"
+                    
+                    // Create the directory using 'mkdir' command
+                    bat "mkdir \"${targetDir}\""
 
                     // Define the source paths and destination path
                     def sourcePathsOne = [
