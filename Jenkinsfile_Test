@@ -68,11 +68,11 @@ pipeline {
         stage('create folder') {
             steps {
                 script {
-                    def destPath = "${env.WORKSPACE}\\${env.WORKSPACE}"
-                    def dataDestPath = "${env.WORKSPACE}\\${env.WORKSPACE}\\Data"
+                    def destPath = "${env.WORKSPACE}"
+                    def dataDestPath = "${env.WORKSPACE}\\Data"
 
-                    stepCreateFolder(destPath)
-                    stepCreateFolder(dataDestPath)
+                    bat "mkdir \"${env.WORKSPACE}\""
+                     bat "mkdir \"${env.WORKSPACE}\\Data\""
 
                     // Define the source paths and destination path
                     def sourcePathsOne = [
