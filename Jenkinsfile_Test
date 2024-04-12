@@ -1,4 +1,4 @@
-nv@Library('cm_shared_library') _
+@Library('cm_shared_library') _
 pipeline {
     agent {
         label 'CarMakerServer' // Label for Windows agent
