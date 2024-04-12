@@ -68,7 +68,9 @@ pipeline {
         stage('create folder') {
             steps {
                 script {
-                    stepCreateFolder("${env.WORKSPACE}")
+                    def destPath = "${env.WORKSPACE}"\${env.WORKSPACE}"
+                    stepCreateFolder(destPath)
+                    stepCopyFolder()
                 }
             }
         }
