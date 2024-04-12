@@ -76,7 +76,7 @@ pipeline {
 
                     // Extract the directory name from the WORKSPACE path
                     def workspacePath = env.WORKSPACE
-                    def directoryName = getDirectoryName(workspacePath)
+                    def directoryName = new File(workspacePath).name
                     
                     // Define the target directory path within the workspace
                     def targetDir = "${workspacePath}\\${directoryName}"
