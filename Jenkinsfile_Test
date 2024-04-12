@@ -26,6 +26,7 @@ pipeline {
                     // Call the Python script for dat file generation
                     //bat "python carmakerdatfilegenerator.py"
                     //stepCarMakerDatFileGenerator()
+                    echo "This is an echo message."
                 }
             }
         }
@@ -36,6 +37,7 @@ pipeline {
                     // Call the Python script for excel file generation
                     //bat "python autoexcelfilegenerator.py"
                     //stepAutoExcelFileGenerator()
+                    echo "This is an echo message."
                 }
             }
         }
@@ -53,6 +55,7 @@ pipeline {
                     //stepCopyFile(fileName, sourcePath, targetPath)
 
                     //stepTestSeriesGenerator()
+                    echo "This is an echo message."
                 }
             }
         }
