@@ -1,4 +1,4 @@
-@Library('cm_shared_library') _
+nv@Library('cm_shared_library') _
 pipeline {
     agent {
         label 'CarMakerServer' // Label for Windows agent
@@ -68,8 +68,8 @@ pipeline {
         stage('create folder') {
             steps {
                 script {
-                    def destPath = "${WORKSPACE}\\${WORKSPACE}"
-                    def dataDestPath = "${WORKSPACE}\\${WORKSPACE}\\Data"
+                    def destPath = "${env.WORKSPACE}\\${env.WORKSPACE}"
+                    def dataDestPath = "${env.WORKSPACE}\\${env.WORKSPACE}\\Data"
 
                     stepCreateFolder(destPath)
                     stepCreateFolder(dataDestPath)
@@ -78,14 +78,12 @@ pipeline {
                     def sourcePathsOne = [
                         "${WORKSPACE}\\Data\\TestRun",
                         "${WORKSPACE}\\Data\\Chasis",
-                        "${WORKSPACE}\\Data\\Pic",
                         "${WORKSPACE}\\Data\\Tire",
                         "${WORKSPACE}\\Data\\Vehicle"
                     ]
                    
                     // Define the source paths and destination path
                     def sourcePathsTwo = [
-                        "${WORKSPACE}\\docs",
                         "${WORKSPACE}\\Movie"
                     ]
 
