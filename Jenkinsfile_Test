@@ -47,7 +47,7 @@ pipeline {
                     //bat "python testseriesgenerator.py"
                     def fileName = 'Template.ts'
                     def sourcePath = 'template/Template.ts'
-                    def targetPath = "${env.WORKSPACE}" // Use Jenkins workspace as target
+                    def targetPath = "${WORKSPACE}" // Use Jenkins workspace as target
                     
                     // Call the copyFile function to copy the file
                     stepCopyFile(fileName, sourcePath, targetPath)
@@ -68,9 +68,33 @@ pipeline {
         stage('create folder') {
             steps {
                 script {
-                    def destPath = "${env.WORKSPACE}\\${env.WORKSPACE}"
+                    def destPath = "${WORKSPACE}\\${WORKSPACE}"
+                    def dataDestPath = "${WORKSPACE}\\${WORKSPACE}\\Data"
+
                     stepCreateFolder(destPath)
-                    stepCopyFolder()
+                    stepCreateFolder(dataDestPath)
+
+                    // Load and execute the copyFiles.groovy script
+                    //def copyScript = load('copyFiles.groovy')
+
+                    // Define the source paths and destination path
+                    def sourcePathsOne = [
+                        "${WORKSPACE}\\Data\\TestRun",
+                        "${WORKSPACE}\\Data\\Chasis",
+                        "${WORKSPACE}\\Data\\Pic",
+                        "${WORKSPACE}\\Data\\Tire",
+                        "${WORKSPACE}\\Data\\Vehicle"
+                    ]
+                   
+                    // Define the source paths and destination path
+                    def sourcePathsTwo = [
+                        "${WORKSPACE}\\docs",
+                        "${WORKSPACE}\\Movie"
+                    ]
+
+                    stepCopyFolder(sourcePathsOne, dataDestPath)
+                    stepCopyFolder(sourcePathsTwo, destPath)
+
                 }
             }
         }
