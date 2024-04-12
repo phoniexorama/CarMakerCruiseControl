@@ -25,7 +25,7 @@ pipeline {
                 script {
                     // Call the Python script for dat file generation
                     //bat "python carmakerdatfilegenerator.py"
-                    stepCarMakerDatFileGenerator()
+                    //stepCarMakerDatFileGenerator()
                 }
             }
         }
@@ -35,7 +35,7 @@ pipeline {
                 script {
                     // Call the Python script for excel file generation
                     //bat "python autoexcelfilegenerator.py"
-                    stepAutoExcelFileGenerator()
+                    //stepAutoExcelFileGenerator()
                 }
             }
         }
@@ -50,9 +50,9 @@ pipeline {
                     def targetPath = "${WORKSPACE}" // Use Jenkins workspace as target
                     
                     // Call the copyFile function to copy the file
-                    stepCopyFile(fileName, sourcePath, targetPath)
+                    //stepCopyFile(fileName, sourcePath, targetPath)
 
-                    stepTestSeriesGenerator()
+                    //stepTestSeriesGenerator()
                 }
             }
         }
