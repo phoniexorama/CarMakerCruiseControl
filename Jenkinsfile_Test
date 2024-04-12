@@ -74,9 +74,6 @@ pipeline {
                     stepCreateFolder(destPath)
                     stepCreateFolder(dataDestPath)
 
-                    // Load and execute the copyFiles.groovy script
-                    //def copyScript = load('copyFiles.groovy')
-
                     // Define the source paths and destination path
                     def sourcePathsOne = [
                         "${WORKSPACE}\\Data\\TestRun",
