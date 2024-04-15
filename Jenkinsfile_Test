@@ -74,44 +74,48 @@ pipeline {
 
                    // Get the WORKSPACE environment variable
                     def workspace = "${env.WORKSPACE}"
-                
-                    // Find the index of the last '\\' character
+                    
+                    // Define the last name from the workspace path
                     def lastIndex = workspace.lastIndexOf('\\')
-                    
-                    // Extract the substring after the last '\\' character
                     def lastName = workspace.substring(lastIndex + 1)
-                    
-                    // Print the extracted last name
                     println "Last Name: ${lastName}"
                     
-                    bat "mkdir \"${lastName}\""
-
-                    // Create the Data directory inside the main directory
-                    def dataDirectory = "\"${lastName}\\Data\""
-                    bat "mkdir ${dataDirectory}"
-
-                    def destPath = "${env.WORKSPACE}\\${lastName}"
-                    def dataDestPath = "${env.WORKSPACE}\\${lastName}\\Data"
+                    // Define main directory path based on last name
+                    def mainDirectoryPath = "${workspace}\\${lastName}"
                     
-                    // Define the First source paths and destination path
-                    //add "${WORKSPACE}\\Data\\Pic",
-                    def sourcePathsOne = [
-                        "${WORKSPACE}\\Data\\TestRun",
-                        "${WORKSPACE}\\Data\\Chasis",
-                        "${WORKSPACE}\\Data\\Tire",
-                        "${WORKSPACE}\\Data\\Vehicle"
+                    // Check and create main directory if not exists
+                    if (!fileExists(mainDirectoryPath)) {
+                        bat "mkdir \"${mainDirectoryPath}\""
+                    }
+                    
+                    // Define the Data directory path
+                    def dataDirectoryPath = "${mainDirectoryPath}\\Data"
+                    
+                    // Check and create Data directory if not exists
+                    if (!fileExists(dataDirectoryPath)) {
+                        bat "mkdir \"${dataDirectoryPath}\""
+                    }
+                    
+                    // Define source paths and corresponding destination paths
+                    def sourceDestinationMappings = [
+                        "${workspace}\\Data\\TestRun": "${dataDirectoryPath}\\TestRun",
+                        "${workspace}\\Data\\Chasis": "${dataDirectoryPath}\\Chasis",
+                        "${workspace}\\Data\\Tire": "${dataDirectoryPath}\\Tire",
+                        "${workspace}\\Data\\Vehicle": "${dataDirectoryPath}\\Vehicle",
+                        "${workspace}\\Movie": "${mainDirectoryPath}\\Movie"
                     ]
-                   
-                    // Define the second source paths and destination path
-                    def sourcePathsTwo = [
-                        "${WORKSPACE}\\Movie"
-                    ]
-
-                    stepCopyFolder(sourcePathsOne, dataDestPath)
-                    stepCopyFolder(sourcePathsTwo, destPath)
+                    
+                    // Call the copyFolder function to copy folders
+                    stepCopyFolder(sourceDestinationMappings.keySet(), dataDirectoryPath)
+                    stepCopyFolder(["${workspace}\\Movie"], "${mainDirectoryPath}\\Movie")
 
                 }
             }
         }
     }
+}
+// Function to check if a file or directory exists
+def fileExists(filePath) {
+    def file = new File(filePath)
+    return file.exists()
 }
