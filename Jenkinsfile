@@ -20,7 +20,7 @@ pipeline {
 
     stages {
         
-        stage('dat file generation') {
+        stage('Dat File Generator') {
             steps {
                 script {
                     // Call the Python script for dat file generation
@@ -30,7 +30,7 @@ pipeline {
             }
         }
 
-        stage('excel file generator') {
+        stage('Excelfile Generator') {
             steps {
                 script {
                     // Call the Python script for excel file generation
@@ -40,7 +40,7 @@ pipeline {
             }
         }
 
-        stage('test series generator') {
+        stage('Testseries Generator') {
             steps {
                 script {
                     // Call the Python script for test series generation
@@ -57,7 +57,7 @@ pipeline {
             }
         }
         
-        stage('run test manager') {
+        stage('Run TestManager') {
             steps {
                 script {
                     // Call the Python script for running test manager
@@ -79,5 +79,45 @@ pipeline {
                 }
             }
         }
+
+        stage('Pack Artifacts') {
+            steps {
+                script {
+
+                   // Get the WORKSPACE environment variable
+                    def workspace = env.WORKSPACE
+                    
+                    // Define the last name from the workspace path
+                    def lastIndex = workspace.lastIndexOf('\\')
+                    def lastName = workspace.substring(lastIndex + 1)
+                    println "Last Name: ${lastName}"
+                    
+                    // Define main directory path based on last name
+                    def mainDirectoryPath = "${workspace}\\${lastName}"
+                    
+                    // Check and create main directory if not exists
+                    bat "mkdir \"${mainDirectoryPath}\""
+                    
+                    // Define the Data directory path
+                    def dataDirectoryPath = "${mainDirectoryPath}\\Data"
+                    
+                    // Check and create Data directory if not exists
+                    bat "mkdir \"${dataDirectoryPath}\""
+                    
+                    // Define source paths and corresponding destination paths
+                    def sourceDestinationMappings = [
+                        "${workspace}\\Data\\TestRun": "${dataDirectoryPath}\\TestRun",
+                        "${workspace}\\Data\\Chassis": "${dataDirectoryPath}\\Chassis",
+                        "${workspace}\\Data\\Tire": "${dataDirectoryPath}\\Tire",
+                        "${workspace}\\Data\\Pic": "${dataDirectoryPath}\\Pic",
+                        "${workspace}\\Data\\Vehicle": "${dataDirectoryPath}\\Vehicle",
+                        "${workspace}\\Movie": "${mainDirectoryPath}\\Movie"
+                    ]
+                                    
+                    // Copy folders with recursive content from source paths to corresponding destination paths
+                    stepCopyFolder(sourceDestinationMappings)
+                }
+            }
+        }    
     }
 }
