@@ -86,6 +86,10 @@ pipeline {
                     
                     bat "mkdir \"${lastName}\""
 
+                    // Create the Data directory inside the main directory
+                    def dataDirectory = "\"${lastName}\\Data\""
+                    bat "mkdir ${dataDirectory}"
+
                     def destPath = "${env.WORKSPACE}\\${lastName}"
                     def dataDestPath = "${env.WORKSPACE}\\${lastName}\\Data"
                     
