@@ -74,15 +74,25 @@ pipeline {
                     def destPath = "${env.WORKSPACE}"
                     def dataDestPath = "${env.WORKSPACE}\\Data"
 
-                    // Extract the directory name from the WORKSPACE path
-                    def workspacePath = env.WORKSPACE
-                    def directoryName = new File(workspacePath).name
+                   // Get the WORKSPACE environment variable
+                    def workspace = "${env.WORKSPACE}"
+                
+                    // Find the index of the last '\\' character
+                    def lastIndex = workspace.lastIndexOf('\\')
                     
-                    // Define the target directory path within the workspace
-                    def targetDir = "${workspacePath}\\${directoryName}"
+                    // Extract the substring after the last '\\' character
+                    def lastName = workspace.substring(lastIndex + 1)
                     
-                    // Create the directory using 'bat' command
-                    bat "mkdir \"${targetDir}\""
+                    // Print the extracted last name
+                    println "Last Name: ${lastName}"
+                    
+                    // Store the last name in a variable
+                    def extractedName = lastName
+                    
+                    // Now 'extractedName' contains the desired last name
+                    println "Stored in Variable: ${extractedName}"
+
+                    bat "mkdir \"${lastName}\""
                     
                     // Print a message indicating directory creation
                     echo "Successfully created directory: ${targetDir}"
