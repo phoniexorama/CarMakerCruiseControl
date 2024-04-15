@@ -97,6 +97,7 @@ pipeline {
                         "${workspace}\\Data\\TestRun": "${dataDirectoryPath}\\TestRun",
                         "${workspace}\\Data\\Chasis": "${dataDirectoryPath}\\Chassis",
                         "${workspace}\\Data\\Tire": "${dataDirectoryPath}\\Tire",
+                        "${workspace}\\Data\\Tire": "${dataDirectoryPath}\\Pic",
                         "${workspace}\\Data\\Vehicle": "${dataDirectoryPath}\\Vehicle",
                         "${workspace}\\Movie": "${mainDirectoryPath}\\Movie"
                     ]
