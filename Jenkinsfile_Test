@@ -100,15 +100,7 @@ pipeline {
                         "${workspace}\\Data\\Vehicle": "${dataDirectoryPath}\\Vehicle",
                         "${workspace}\\Movie": "${mainDirectoryPath}\\Movie"
                     ]
-                    
-                    // Function to copy folders using 'bat' step
-                    def copyFolders(sourceDestinationMap) {
-                        sourceDestinationMap.each { sourcePath, destinationPath ->
-                            // Use 'bat' step to execute Windows command for copying
-                            bat "xcopy /E /I /Y \"${sourcePath}\" \"${destinationPath}\""
-                            println "Successfully copied '${sourcePath}' to '${destinationPath}'"
-                        }
-                    }
+                
                     
                     // Copy folders with recursive content from source paths to corresponding destination paths
                     stepCopyFolders(sourceDestinationMappings)
