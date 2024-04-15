@@ -100,7 +100,7 @@ pipeline {
                         "${workspace}\\Data\\Pic": "${dataDirectoryPath}\\Pic",
                         "${workspace}\\Data\\Vehicle": "${dataDirectoryPath}\\Vehicle",
                         "${workspace}\\Movie": "${mainDirectoryPath}\\Movie",
-                        "${workspace}\\doc": "${mainDirectoryPath}\\doc"
+                        "${workspace}\\doc": "${mainDirectoryPath}\\doc",
                     ]
                 
                     
