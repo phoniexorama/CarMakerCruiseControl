@@ -71,8 +71,6 @@ pipeline {
         stage('create folder') {
             steps {
                 script {
-                    def destPath = "${env.WORKSPACE}"
-                    def dataDestPath = "${env.WORKSPACE}\\Data"
 
                    // Get the WORKSPACE environment variable
                     def workspace = "${env.WORKSPACE}"
@@ -86,17 +84,13 @@ pipeline {
                     // Print the extracted last name
                     println "Last Name: ${lastName}"
                     
-                    // Store the last name in a variable
-                    def extractedName = lastName
-                    
-                    // Now 'extractedName' contains the desired last name
-                    println "Stored in Variable: ${extractedName}"
-
                     bat "mkdir \"${lastName}\""
+
+                    def destPath = "${env.WORKSPACE}\\${lastName}"
+                    def dataDestPath = "${env.WORKSPACE}\\${lastName}\\Data"
                     
-                    // Print a message indicating directory creation
-                    echo "Successfully created directory: ${targetDir}"
-                    // Define the source paths and destination path
+                    // Define the First source paths and destination path
+                    //add "${WORKSPACE}\\Data\\Pic",
                     def sourcePathsOne = [
                         "${WORKSPACE}\\Data\\TestRun",
                         "${WORKSPACE}\\Data\\Chasis",
@@ -104,7 +98,7 @@ pipeline {
                         "${WORKSPACE}\\Data\\Vehicle"
                     ]
                    
-                    // Define the source paths and destination path
+                    // Define the second source paths and destination path
                     def sourcePathsTwo = [
                         "${WORKSPACE}\\Movie"
                     ]
