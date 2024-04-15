@@ -95,7 +95,7 @@ pipeline {
                     // Define source paths and corresponding destination paths
                     def sourceDestinationMappings = [
                         "${workspace}\\Data\\TestRun": "${dataDirectoryPath}\\TestRun",
-                        "${workspace}\\Data\\Chasis": "${dataDirectoryPath}\\Chasis",
+                        "${workspace}\\Data\\Chasis": "${dataDirectoryPath}\\Chassis",
                         "${workspace}\\Data\\Tire": "${dataDirectoryPath}\\Tire",
                         "${workspace}\\Data\\Vehicle": "${dataDirectoryPath}\\Vehicle",
                         "${workspace}\\Movie": "${mainDirectoryPath}\\Movie"
