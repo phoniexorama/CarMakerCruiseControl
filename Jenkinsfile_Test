@@ -73,7 +73,7 @@ pipeline {
                 script {
 
                    // Get the WORKSPACE environment variable
-                    def workspace = "${env.WORKSPACE}"
+                    def workspace = env.WORKSPACE
                     
                     // Define the last name from the workspace path
                     def lastIndex = workspace.lastIndexOf('\\')
@@ -84,17 +84,13 @@ pipeline {
                     def mainDirectoryPath = "${workspace}\\${lastName}"
                     
                     // Check and create main directory if not exists
-                    if (!fileExists(mainDirectoryPath)) {
-                        bat "mkdir \"${mainDirectoryPath}\""
-                    }
+                    bat "mkdir \"${mainDirectoryPath}\""
                     
                     // Define the Data directory path
                     def dataDirectoryPath = "${mainDirectoryPath}\\Data"
                     
                     // Check and create Data directory if not exists
-                    if (!fileExists(dataDirectoryPath)) {
-                        bat "mkdir \"${dataDirectoryPath}\""
-                    }
+                    bat "mkdir \"${dataDirectoryPath}\""
                     
                     // Define source paths and corresponding destination paths
                     def sourceDestinationMappings = [
@@ -105,17 +101,20 @@ pipeline {
                         "${workspace}\\Movie": "${mainDirectoryPath}\\Movie"
                     ]
                     
-                    // Call the copyFolder function to copy folders
-                    stepCopyFolder(sourceDestinationMappings.keySet(), dataDirectoryPath)
-                    stepCopyFolder(["${workspace}\\Movie"], "${mainDirectoryPath}\\Movie")
-
+                    // Function to copy folders using 'bat' step
+                    def copyFolders(sourceDestinationMap) {
+                        sourceDestinationMap.each { sourcePath, destinationPath ->
+                            // Use 'bat' step to execute Windows command for copying
+                            bat "xcopy /E /I /Y \"${sourcePath}\" \"${destinationPath}\""
+                            println "Successfully copied '${sourcePath}' to '${destinationPath}'"
+                        }
+                    }
+                    
+                    // Copy folders with recursive content from source paths to corresponding destination paths
+                    stepCopyFolders(sourceDestinationMappings)
                 }
             }
         }
     }
 }
-// Function to check if a file or directory exists
-def fileExists(filePath) {
-    def file = new File(filePath)
-    return file.exists()
-}
+
