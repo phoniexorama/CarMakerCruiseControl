@@ -103,7 +103,7 @@ pipeline {
                 
                     
                     // Copy folders with recursive content from source paths to corresponding destination paths
-                    stepCopyFolders(sourceDestinationMappings)
+                    stepCopyFolder(sourceDestinationMappings)
                 }
             }
         }
