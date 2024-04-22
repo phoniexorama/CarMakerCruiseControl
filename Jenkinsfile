@@ -26,7 +26,10 @@ pipeline {
                 script {
                     // Call the Python script for dat file generation
                     //bat "python carmakerdatfilegenerator.py"
-                    stepCarMakerDatFileGenerator()
+                    //stepCarMakerDatFileGenerator()
+                    echo "This is an echo statement"
+                    println("This is not an echo statement")
+                    echo "Another echo statement"
                 }
             }
         }
@@ -36,7 +39,10 @@ pipeline {
                 script {
                     // Call the Python script for excel file generation
                     //bat "python autoexcelfilegenerator.py"
-                    stepAutoExcelFileGenerator()
+                    //stepAutoExcelFileGenerator()
+                    echo "This is an echo statement"
+                    println("This is not an echo statement")
+                    echo "Another echo statement"
                 }
             }
         }
@@ -46,14 +52,17 @@ pipeline {
                 script {
                     // Call the Python script for test series generation
                     //bat "python testseriesgenerator.py"
-                    def fileName = 'Template.ts'
-                    def sourcePath = 'template/Template.ts'
-                    def targetPath = "${env.WORKSPACE}" // Use Jenkins workspace as target
+                    //def fileName = 'Template.ts'
+                    //def sourcePath = 'template/Template.ts'
+                    //def targetPath = "${env.WORKSPACE}" // Use Jenkins workspace as target
                     
                     // Call the copyFile function to copy the file
-                    stepCopyFile(fileName, sourcePath, targetPath)
+                    //stepCopyFile(fileName, sourcePath, targetPath)
 
-                    stepTestSeriesGenerator()
+                    //stepTestSeriesGenerator()
+                    echo "This is an echo statement"
+                    println("This is not an echo statement")
+                    echo "Another echo statement"
                 }
             }
         }
@@ -63,20 +72,23 @@ pipeline {
                 script {
                     // Call the Python script for running test manager
                     //bat "python runtestmanager.py"
-                    def fileName = 'carmaker.bat'
-                    def sourcePath = 'bat/carmaker.bat'
-                    def targetPath = "${env.WORKSPACE}" // Use Jenkins workspace as target
-                    def tclFile = 'CMGUI_RemCtrl.tcl'
-                    def tclSourcePath = 'tcl/CMGUI_RemCtrl.tcl'
-                    def tclDesPath = "${env.WORKSPACE}\\Data\\Script\\Examples"
+                    //def fileName = 'carmaker.bat'
+                    //def sourcePath = 'bat/carmaker.bat'
+                    //def targetPath = "${env.WORKSPACE}" // Use Jenkins workspace as target
+                    //def tclFile = 'CMGUI_RemCtrl.tcl'
+                    //def tclSourcePath = 'tcl/CMGUI_RemCtrl.tcl'
+                    //def tclDesPath = "${env.WORKSPACE}\\Data\\Script\\Examples"
                     
                     // Call the copyFile function to copy the file
-                    stepCopyFile(fileName, sourcePath, targetPath)
+                    //stepCopyFile(fileName, sourcePath, targetPath)
                     
                     // Call the copyFile function to copy the tcl file
-                    stepCopyFile(tclFile, tclSourcePath, tclDesPath)
+                    //stepCopyFile(tclFile, tclSourcePath, tclDesPath)
                     
-                    stepRunTestManager()
+                    //stepRunTestManager()
+                    echo "This is an echo statement"
+                    println("This is not an echo statement")
+                    echo "Another echo statement"
                 }
             }
         }
@@ -119,11 +131,7 @@ pipeline {
                     def sourceDestinationMappings = [
                         "${workspace}\\Data\\TestRun": "${dataDirectoryPath}\\TestRun",
                         "${workspace}\\Data\\Chassis": "${dataDirectoryPath}\\Chassis",
-                        "${workspace}\\Data\\Tire": "${dataDirectoryPath}\\Tire",
-                        "${workspace}\\Data\\Pic": "${dataDirectoryPath}\\Pic",
-                        "${workspace}\\Data\\Vehicle": "${dataDirectoryPath}\\Vehicle",
-                        "${workspace}\\Movie": "${mainDirectoryPath}\\Movie",
-                        "${workspace}\\doc": "${mainDirectoryPath}\\doc",
+                        "${workspace}\\Data\\Tire": "${dataDirectoryPath}\\Tire",                       
                         "${workspace}\\ModelCheck": "${mainDirectoryPath}\\ModelCheck"
                     ]
                                     
