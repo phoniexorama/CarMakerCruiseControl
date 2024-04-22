@@ -98,6 +98,19 @@ pipeline {
                 script {
                     // Call the Python script for running test manager
                     //bat "python modelcheck.py                    
+                    def fileName = 'carmaker.bat'
+                    def sourcePath = 'bat/carmaker.bat'
+                    def targetPath = "${env.WORKSPACE}" // Use Jenkins workspace as target
+                    def tclFile = 'CMGUI_RemCtrl.tcl'
+                    def tclSourcePath = 'tcl/CMGUI_RemCtrl.tcl'
+                    def tclDesPath = "${env.WORKSPACE}\\Data\\Script\\Examples"
+                    
+                    // Call the copyFile function to copy the file
+                    stepCopyFile(fileName, sourcePath, targetPath)
+                    
+                    // Call the copyFile function to copy the tcl file
+                    stepCopyFile(tclFile, tclSourcePath, tclDesPath)
+                    
                     stepRunModelCheck()
                 }
             }
