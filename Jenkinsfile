@@ -16,6 +16,8 @@ pipeline {
         BATCH_SCRIPT_PATH = "${WORKSPACE}\\carmaker_Frg-Bedatung_Cayenne_E4_CM12.bat"
         TEST_SERIES_FOLDER_PATH = "${WORKSPACE}\\Data\\TestRun"
         FORMAT_FILE_CONFIG_PATH = "${WORKSPACE}\\Data\\Config\\Lenkwinkelrampe_Temp"
+        BATCH_SCRIPT_NAME = 'carmaker_Frg-Bedatung_Cayenne_E4_CM12.bat'
+        TCL_SCRIPT_NAME = 'CMGUI_RemCtrl.tcl'
         MODELCHECK_PATH = "${WORKSPACE}\\ModelCheck"
     }
 
@@ -64,10 +66,10 @@ pipeline {
                     // Call the Python script for running test manager
                     //bat "python runtestmanager.py"
                     def fileName = 'carmaker_Frg-Bedatung_Cayenne_E4_CM12.bat'
-                    def sourcePath = 'bat/carmaker_Frg-Bedatung_Cayenne_E4_CM12.bat'
+                    def sourcePath = 'bat//${env.BATCH_SCRIPT_NAME}'
                     def targetPath = "${env.WORKSPACE}" // Use Jenkins workspace as target
-                    def tclFile = 'CMGUI_RemCtrl.tcl'
-                    def tclSourcePath = 'tcl/CMGUI_RemCtrl.tcl'
+                    def tclFile = "${env.TCL_SCRIPT_NAME}"
+                    def tclSourcePath = "tcl//${env.TCL_SCRIPT_NAME}"
                     def tclDesPath = "${env.WORKSPACE}\\Data\\Script\\Examples"
                     
                     // Call the copyFile function to copy the file
