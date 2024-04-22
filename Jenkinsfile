@@ -123,7 +123,8 @@ pipeline {
                         "${workspace}\\Data\\Pic": "${dataDirectoryPath}\\Pic",
                         "${workspace}\\Data\\Vehicle": "${dataDirectoryPath}\\Vehicle",
                         "${workspace}\\Movie": "${mainDirectoryPath}\\Movie",
-                        "${workspace}\\doc": "${mainDirectoryPath}\\doc"
+                        "${workspace}\\doc": "${mainDirectoryPath}\\doc",
+                        "${workspace}\\ModelCheck": "${mainDirectoryPath}\\ModelCheck"
                     ]
                                     
                     // Copy folders with recursive content from source paths to corresponding destination paths
