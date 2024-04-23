@@ -13,7 +13,7 @@ pipeline {
         VFF_FOLDER_PATH = "${WORKSPACE}\\Data\\Vehicle"
         DAT_FOLDER_PATH = "${WORKSPACE}\\SimOutput\\ENGPMAKNB022\\log"
         EXCEL_FOLDER_PATH = "${WORKSPACE}\\VehicleInfoExcel"
-        BATCH_SCRIPT_PATH = "${WORKSPACE}\\carmaker_Frg-Bedatung_Cayenne_E4_CM12.bat"
+        BATCH_SCRIPT_PATH = "${WORKSPACE}\\${BATCH_SCRIPT_NAME}"
         TEST_SERIES_FOLDER_PATH = "${WORKSPACE}\\Data\\TestRun"
         FORMAT_FILE_CONFIG_PATH = "${WORKSPACE}\\Data\\Config\\Lenkwinkelrampe_Temp"
         BATCH_SCRIPT_NAME = 'carmaker_Frg-Bedatung_Cayenne_E4_CM12.bat'
