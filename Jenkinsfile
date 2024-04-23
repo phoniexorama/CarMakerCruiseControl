@@ -65,7 +65,7 @@ pipeline {
                 script {
                     // Call the Python script for running test manager
                     //bat "python runtestmanager.py"
-                    def fileName = 'carmaker_Frg-Bedatung_Cayenne_E4_CM12.bat'
+                    def fileName = "${env.BATCH_SCRIPT_NAME}"
                     def sourcePath = "bat//${env.BATCH_SCRIPT_NAME}"
                     def targetPath = "${env.WORKSPACE}" // Use Jenkins workspace as target
                     def tclFile = "${env.TCL_SCRIPT_NAME}"
