@@ -50,7 +50,7 @@ pipeline {
                     // Call the Python script for test series generation
                     //bat "python testseriesgenerator.py"
                     def fileName = 'Template.ts'
-                    def sourcePath = 'template//${env.PROJECT_NAME}//Template.ts'
+                    def sourcePath = "template//${env.PROJECT_NAME}//Template.ts"
                     def targetPath = "${env.WORKSPACE}" // Use Jenkins workspace as target
                     
                     // Call the copyFile function to copy the file
