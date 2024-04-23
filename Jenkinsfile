@@ -16,9 +16,10 @@ pipeline {
         BATCH_SCRIPT_PATH = "${WORKSPACE}\\${BATCH_SCRIPT_NAME}"
         TEST_SERIES_FOLDER_PATH = "${WORKSPACE}\\Data\\TestRun"
         FORMAT_FILE_CONFIG_PATH = "${WORKSPACE}\\Data\\Config\\Lenkwinkelrampe_Temp"
-        BATCH_SCRIPT_NAME = 'carmaker_Frg-Bedatung_Cayenne_E4_CM12.bat'
+        BATCH_SCRIPT_NAME = "carmaker_${PROJECT_NAME}.bat"
         TCL_SCRIPT_NAME = 'CMGUI_RemCtrl.tcl'
         MODELCHECK_PATH = "${WORKSPACE}\\ModelCheck"
+        PROJECT_NAME = 'Frg-Bedatung_Cayenne_E4_CM12'
     }
 
     stages {
@@ -49,7 +50,7 @@ pipeline {
                     // Call the Python script for test series generation
                     //bat "python testseriesgenerator.py"
                     def fileName = 'Template.ts'
-                    def sourcePath = 'template/Template.ts'
+                    def sourcePath = 'template//${env.PROJECT_NAME}//Template.ts'
                     def targetPath = "${env.WORKSPACE}" // Use Jenkins workspace as target
                     
                     // Call the copyFile function to copy the file
